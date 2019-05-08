@@ -1,0 +1,356 @@
+html {
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+div.stick {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0,0,0,0.2);
+}
+div.stick:nth-child(1):after {
+  content: '';
+  width: 4px;
+  height: 98px;
+  background: #b62542;
+  position: absolute;
+  top: 169px;
+  z-index: 11;
+}
+div.stick:nth-child(5):after {
+  content: '';
+  width: 4px;
+  height: 98px;
+  background: #b62542;
+  position: absolute;
+  bottom: 114px;
+  z-index: 11;
+}
+div.stick:nth-child(7):after {
+  content: '';
+  width: 4px;
+  height: 98px;
+  background: #b62542;
+  position: absolute;
+  top: 239px;
+  left: -4px;
+  z-index: 11;
+}
+
+main {
+  width: 100%;
+  display: block;
+}
+header {
+  width: 100%;
+  height: 100vh;
+}
+div.back-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.fade {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+a#main-logo {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 11;
+  transform: translateX(-50%);
+}
+div#center-text {
+  position: absolute;
+  top: 50%;
+  left: 12.5%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+div#center-text h1 {
+  font-size: 76px;
+  max-width: 718px;
+}
+div#center-text h1 span:first-child {
+  color: #b62542;
+}
+div#center-text h1 span:nth-child(2){
+  display: inline-block;
+}
+div#center-text h1 span:nth-child(2):after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: #b62542;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+div#center-text p {
+  font-size: 22px;
+  font-weight: 500;
+  max-width: 809px;
+  margin-top: 36px;
+  margin-bottom: 26px;
+}
+div#center-text a {
+  font-size: 22px;
+  width: 241px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #b62542;
+  color: white;
+  transition: .6s;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 22px;
+}
+div#center-text a:hover {
+  background: black;
+}
+div#center-text div.small-text {
+  vertical-align: middle;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 22px;
+}
+div#mouse-block {
+  position: absolute;
+  z-index: 3;
+  left: 12.5%;
+  transform: translateX(-50%);
+  bottom: 97px;
+}
+div#mouse-block:after {
+  content: '';
+  width: 1px;
+  height: 90px;
+  top: 47px;
+  position: absolute;
+  z-index: 3;
+  backface-visibility: hidden;
+  background: black;
+  left: calc(50% - 0.5px);
+}
+a#mobile-number{
+  font-size: 24px;
+  position: absolute;
+  top: 57px;
+  left: 75%;
+  padding-left: 10px;
+  z-index: 3;
+  color: black;
+  font-weight: 600;
+}
+section {
+  width: 100%;
+  display: block;
+}
+section.change-section {
+  height: 300vh;
+}
+section.advantages {
+  height: 200vh;
+}
+section.advantages div.bottom-text {
+  position: absolute;
+  z-index: 10;
+  left: 62.5%;
+  bottom: 190px;
+}
+section.advantages div.bottom-text h2 {
+  font-size: 50px;
+  max-width: 410px;
+  text-transform: uppercase;
+}
+section.advantages div.bottom-text h2:after {
+  content: '';
+  width: 110px;
+  height: 4px;
+  background: #b62542;
+  position: absolute;
+  top: 110%;
+  left: 0;
+}
+section.advantages div.bottom-text p:nth-child(2) {
+  margin-top: 47px;
+  max-width: 481px;
+  font-size: 22px;
+}
+section.advantages div.bottom-text p:nth-child(3) {
+  font-size: 16px;
+  margin-top: 16px;
+  display: inline-block;
+}
+section.advantages div.bottom-text p:nth-child(3):after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  position: absolute;
+  left: 110%;
+  background: black;
+  top: 50%;
+  transform: translateY(-50%);
+  backface-visibility: hidden;
+}
+section.advantages div.bottom-text a {
+  width: 241px;
+  display: inline-block;
+  margin-top: 27px;
+  height: 60px;
+  line-height: 60px;
+  background: #b62542;
+  text-align: center;
+  color: white;
+  transition: .6s;
+}
+section.advantages div.bottom-text a:hover {
+  background: black;
+}
+section.service-container {
+  width: 100%;
+  padding-top: 61px;
+  padding-bottom: 167px;
+}
+section.service-container div.first-image {
+  width: 50%;
+  padding-top: 28%;
+  left: 12.5%;
+  z-index: 10;
+}
+section.service-container div.second-image {
+  width: 25%;
+  padding-top: 14%;
+  left: 37.5%;
+  margin-top: 52px;
+  z-index: 10;
+}
+section.service-container div.third-image {
+  position: absolute;
+  width: 25%;
+  padding-top: 14%;
+  top: 50%;
+  transform: translate(0,-50%);
+  left: 62.5%;
+  margin-top: 52px;
+  z-index: 10;
+}
+div#services {
+  padding-top: 150px;
+}
+div#services h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  left: 12.5%;
+  padding-left: 66px;
+}
+div#services ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  margin-bottom: 54px;
+}
+div#services ul li {
+  list-style: none;
+  vertical-align: bottom;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0 2.5px;
+  min-width: 127px;
+  max-width: 127px;
+}
+div#services ul li img {
+  margin-bottom: 23px;
+  max-height: 53px;
+}
+div#services ul li p {
+  max-height: 15px;
+}
+div#service-icons {
+  z-index: 4;
+  left: calc( 12.5% + 66px);
+  margin-top: 83px;
+  border-left: 2px solid #b62542;
+}
+section.idea-container div.right-text {
+  position: absolute;
+  padding-right: 12.5%;
+  width: 100%;
+  top: 83%;
+  transform: translate(0,-50%);
+  text-align: right;
+}
+section.idea-container div.right-text:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+section.idea-container div.right-text div.float {
+  float: right;
+  width: 100%;
+}
+section.idea-container div.right-text h2 {
+  font-size: 50px;
+  margin-bottom: 44px;
+  text-transform: uppercase;  
+  float: right;
+  max-width: 970px;
+}
+section.idea-container div.right-text h2:after {
+  content: '';
+  width: 200px;
+  height: 3px;
+  background: #b62542;
+  right: 0;
+  top: 110%;
+  position: absolute;   
+}
+section.idea-container div.right-text p {
+  width: 584px;
+  text-align: right;
+  font-size: 22px;
+  float: right;
+}
+section.idea-container div.right-text div._a_ {
+  width: 100%;
+  float: right;
+  text-align: right;
+  margin-top: 30px;
+}
+section.idea-container div.right-text div._a_ a {
+  color: white;
+  width: 276px;
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #b62542;
+  text-transform: uppercase;
+  transition: .6s;
+}
+section.idea-container div.right-text div a:hover {
+  background: black;
+}
