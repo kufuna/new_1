@@ -102,7 +102,41 @@ function offset(el) {
 var navigation = document.querySelector('nav');
 var header = document.querySelector('header')
 
+var test1 = document.querySelector('#test1');
+var test_1 = document.querySelector('#test_1');
+
+
 window.addEventListener('scroll',function(){
+	if (window.scrollY > offset(test_1).top) {
+		test1.classList.add('active')
+	}else {
+		test1.classList.remove('active')
+	}
+	if (window.scrollY > offset(test_2).top) {
+		test2.classList.add('active')
+	}else {
+		test2.classList.remove('active')
+	}
+	if (window.scrollY > offset(test_3).top) {
+		test3.classList.add('active')
+	}else {
+		test3.classList.remove('active')
+	}
+	if (window.scrollY > offset(test_4).top) {
+		test4.classList.add('active')
+	}else {
+		test4.classList.remove('active')
+	}
+	if (window.scrollY > offset(test_5).top) {
+		test5.classList.add('active')
+	}else {
+		test5.classList.remove('active')
+	}
+	if (window.scrollY > offset(test_6).top) {
+		test6.classList.add('active')
+	}else {
+		test6.classList.remove('active')
+	}
 	for (var i = 0; i < a.length; i++) {
 		if (window.scrollY > offset(a[i]).top) {
 			var differance = window.scrollY - offset(a[i]).top;
