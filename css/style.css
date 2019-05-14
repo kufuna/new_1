@@ -328,11 +328,22 @@ section {
   width: 100%;
   display: block;
 }
+section div.back-white {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  opacity: 0;
+}
 section.change-section {
   height: 300vh;
 }
 section.advantages {
   height: 300vh;
+  background: white;
 }
 section.advantages div.bottom-text {
   position: absolute;
@@ -495,6 +506,7 @@ section.idea-container div.right-text {
   top: 83%;
   transform: translate(0,-50%);
   text-align: right;
+  z-index: 6;
 }
 section.idea-container div.right-text:after {
   content: '';
@@ -554,6 +566,7 @@ div#history-content {
   position: absolute;
   bottom: 72px;
   left: 25%;
+  z-index: 6;
 }
 div#history-content h2 {
   max-width: 530px;
@@ -725,7 +738,14 @@ section#location img {
   height: auto;
   user-select: none;
 }
-section#location div.pin {
+section#location div#map-img {
+  overflow: hidden;
+}
+section#location div#map-img div.map-image {
+  position: relative;
+  /*transform: scale(2);*/
+}
+section#location div#map-img div.map-image div.pin {
   width: 30px;
   height: 30px;
   background: transparent;
@@ -734,6 +754,10 @@ section#location div.pin {
   position: absolute;
   animation: pin 1s infinite;
   cursor: pointer;
+}
+section#location div#map-img div.map-image {
+  width: 100%;
+  height: auto;
 }
 section#location div.pin span {
   display: inline-block;

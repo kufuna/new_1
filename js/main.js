@@ -107,68 +107,118 @@ var test_1 = document.querySelector('#test_1');
 
 
 window.addEventListener('scroll',function(){
-	if (window.scrollY > offset(test_1).top) {
-		test1.classList.add('active')
-	}else {
-		test1.classList.remove('active')
-	}
-	if (window.scrollY > offset(test_2).top) {
-		test2.classList.add('active')
-	}else {
-		test2.classList.remove('active')
-	}
-	if (window.scrollY > offset(test_3).top) {
-		test3.classList.add('active')
-	}else {
-		test3.classList.remove('active')
-	}
-	if (window.scrollY > offset(test_4).top) {
-		test4.classList.add('active')
-	}else {
-		test4.classList.remove('active')
-	}
-	if (window.scrollY > offset(test_5).top) {
-		test5.classList.add('active')
-	}else {
-		test5.classList.remove('active')
-	}
-	if (window.scrollY > offset(test_6).top) {
-		test6.classList.add('active')
-	}else {
-		test6.classList.remove('active')
-	}
-	for (var i = 0; i < a.length; i++) {
-		if (window.scrollY > offset(a[i]).top) {
-			var differance = window.scrollY - offset(a[i]).top;
-			var percentage = differance / a[i].clientHeight * 1.6;
-			// console.log(percentage)
-			a[i].style.opacity = percentage
-		}
-	}
+  imageTop();
+	fadeFn();
+  backWhite();
+  mapFn();
 	if (window.scrollY > header.clientHeight ) {
 		navigation.classList.add('active')
 	}else {
 		navigation.classList.remove('active')
 	}
 })
-
 window.addEventListener('resize',function(){
-	for (var i = 0; i < a.length; i++) {
-		if (window.scrollY > offset(a[i]).top) {
-			var differance = window.scrollY - offset(a[i]).top;
-			var percentage = differance / a[i].clientHeight * 1.6;
-			// console.log(percentage)
-			a[i].style.opacity = percentage
-		}
-	}
+	setTimeout(function() {
+    fadeFn();
+    imageTop();
+    backWhite();
+    mapFn();
+  }, 300);
 })
 
-for (var i = 0; i < a.length; i++) {
-		var differance = window.scrollY - offset(a[i]).top;
-		var percentage = differance / a[i].clientHeight * 1.6;
-		// console.log(percentage)
-		a[i].style.opacity = percentage
-	}
+// if (window.scrollY > offset(a[i]).top + a[i].clientHeight * 3) {
+//     var diff = window.scrollY - a[i].clientHeight * 3;
+//     var perc = diff / a[i].clientHeight;
+//     $(a[i]).parent().parent().closest('.back-white').css({ opacity : perc * 2.4 - 1 })
+// }
+
+var mapFn = function(){
+  var map = document.querySelector('#map-img');
+  var scaleImg = document.querySelector('#map-img .map-image');
+  if (window.scrollY > offset(map).top - window.innerHeight) {
+    var diff = window.scrollY - offset(map).top;
+    var perc = -1 * diff / map.clientHeight * 4;
+    if (perc <= 1) {
+      return
+    }
+    scaleImg.style.transform = 'scale(' + perc + ')';
+    scaleImg.style.transition= '0.1s';
+    console.log(perc)
+  }
+}
+mapFn();
+
+var backWhite = function(){
+  var back = document.querySelectorAll('.back-white');
+  for (var i = 0; i < back.length; i++) {
+      // if (window.scrollY > offset(back[i]).top + back[i].clientHeight / 3 * 2) {
+        var diff = window.scrollY - offset(back[i]).top + back[i].clientHeight / 3 * 2;
+        var perc = diff / back[i].clientHeight * 3 - 4;
+        back[i].style.opacity = perc;
+        if (back[i].classList.contains('whitee')) {
+          back[i].style.opacity = perc + .7;
+        }
+        // console.log(diff , perc)
+      // }
+  }
+}
+
+backWhite();
+
+// var differance = window.scrollY - offset(a[i]).top;
+//       var percentage = differance / a[i].clientHeight * 1.6;
+//       // console.log(percentage)
+//       a[i].style.opacity = percentage
+
+var imageTop = function(){
+
+  if (window.scrollY > offset(test_1).top) {
+    test1.classList.add('active')
+  }else {
+    test1.classList.remove('active')
+  }
+  if (window.scrollY > offset(test_2).top) {
+    test2.classList.add('active')
+  }else {
+    test2.classList.remove('active')
+  }
+  if (window.scrollY > offset(test_3).top) {
+    test3.classList.add('active')
+  }else {
+    test3.classList.remove('active')
+  }
+  if (window.scrollY > offset(test_4).top) {
+    test4.classList.add('active')
+  }else {
+    test4.classList.remove('active')
+  }
+  if (window.scrollY > offset(test_5).top) {
+    test5.classList.add('active')
+  }else {
+    test5.classList.remove('active')
+  }
+  if (window.scrollY > offset(test_6).top) {
+    test6.classList.add('active')
+  }else {
+    test6.classList.remove('active')
+  }
+
+}
+
+imageTop();
+
+var fadeFn = function(){
+
+  for (var i = 0; i < a.length; i++) {
+
+  		var differance = window.scrollY - offset(a[i]).top;
+  		var percentage = differance / a[i].clientHeight * 1.6;
+  		// console.log(percentage)
+  		a[i].style.opacity = percentage
+  }
+
+}
+fadeFn();
 
 var kfn_type = function(element,speed){
         var text = element.dataset.text;
