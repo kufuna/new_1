@@ -1612,6 +1612,8 @@ div#mobile {
     height: 100vh;
     overflow: hidden;
     min-width: unset; 
+    overscroll-behavior: contain;
+    -webkit-overscroll-behavior: contain;
   }
 }
 
