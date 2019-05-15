@@ -1646,24 +1646,24 @@ div#boxx div {
   left: 0;
   width: 100%;
   height: 100%;
-  transition: transform 1s ease-out;
-  -webkit-transform-transition: transform 1s ease-out;
-  -moz-transform-transition: transform 1s ease-out;
-  -ms-transform-transition: transform 1s ease-out;
-  -o-transform-transition: transform 1s ease-out;
+  transition: transform 1s linear;
+  -webkit-transform-transition: transform 1s linear;
+  -moz-transform-transition: transform 1s linear;
+  -ms-transform-transition: transform 1s linear;
+  -o-transform-transition: transform 1s linear;
   user-select: none;
   -webkit-user-select: none;
 }
 div#boxx div.active {
-  transition: transform 1s ease-out;
-  -webkit-transform-transition: transform 1s ease-out;
-  -moz-transform-transition: transform 1s ease-out;
-  -ms-transform-transition: transform 1s ease-out;
-  -o-transform-transition: transform 1s ease-out;
-  transform: translateY(-61px);
-  -webkit-transform: translateY(-61px);
-  -moz-transform: translateY(-61px);
-  -ms-transform: translateY(-61px);
-  -o-transform: translateY(-61px);
-  transform: translateY(-61px);
+  transition: transform 1s linear;
+  -webkit-transform-transition: transform 1s linear;
+  -moz-transform-transition: transform 1s linear;
+  -ms-transform-transition: transform 1s linear;
+  -o-transform-transition: transform 1s linear;
+  transform: translate3d(0,-61px,0);
+  -webkit-transform: translate3d(0,-61px,0);
+  -moz-transform: translate3d(0,-61px,0);
+  -ms-transform: translate3d(0,-61px,0);
+  -o-transform: translate3d(0,-61px,0);
+  transform: translate3d(0,-61px,0);
 }
