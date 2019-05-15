@@ -1646,7 +1646,7 @@ div#boxx div {
   left: 0;
   width: 100%;
   height: 100%;
-  transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
+  transition: transform 1s ease-out;
   -webkit-transform-transition: transform 1s ease-out;
   -moz-transform-transition: transform 1s ease-out;
   -ms-transform-transition: transform 1s ease-out;
@@ -1655,7 +1655,7 @@ div#boxx div {
   -webkit-user-select: none;
 }
 div#boxx div.active {
-  transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
+  transition: transform 1s ease-out;
   -webkit-transform-transition: transform 1s ease-out;
   -moz-transform-transition: transform 1s ease-out;
   -ms-transform-transition: transform 1s ease-out;
