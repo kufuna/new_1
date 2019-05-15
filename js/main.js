@@ -403,7 +403,11 @@ $(function() {
   $("#boxx").swipe( {
     //Generic swipe handler for all directions
     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-      $(this).text("You swiped " + direction );  
+      // $(this).text("You swiped " + direction );  
+      if (direction == 'down') {
+        $(this).find('div').addClass('active')
+        console.log($(this))
+      }
     }
   });
 
