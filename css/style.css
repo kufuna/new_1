@@ -1647,19 +1647,19 @@ div#boxx div {
   width: 100%;
   height: 100%;
   transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -webkit-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -moz-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -ms-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -o-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
+  -webkit-transform-transition: transform 1s ease-out;
+  -moz-transform-transition: transform 1s ease-out;
+  -ms-transform-transition: transform 1s ease-out;
+  -o-transform-transition: transform 1s ease-out;
   user-select: none;
   -webkit-user-select: none;
 }
 div#boxx div.active {
   transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -webkit-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -moz-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -ms-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
-  -o-transform-transition: all 1s cubic-bezier(0.01, 0.01, 0.1, 1);
+  -webkit-transform-transition: transform 1s ease-out;
+  -moz-transform-transition: transform 1s ease-out;
+  -ms-transform-transition: transform 1s ease-out;
+  -o-transform-transition: transform 1s ease-out;
   transform: translateY(-61px);
   -webkit-transform: translateY(-61px);
   -moz-transform: translateY(-61px);
