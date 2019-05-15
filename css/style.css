@@ -4,6 +4,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden; 
+  min-width: 768px;
 }
 * {
   box-sizing: border-box;
@@ -74,12 +75,15 @@ nav {
   left: 0;
   z-index: 25;
   background: #f6f6f6;
-  transform: translate(-100%, 200px);
-  transition: 1s;
+  transform: translate(0, 0) scaleY(0);
+  transition: 1s cubic-bezier(0.81, 0.01, 0.1, 0.99);
   overflow: hidden;
+  transition-delay: 1s;
+  transform-origin: bottom;
 }
 nav.active {
-  transform: translate(0,0);
+  transform: translate(0,0) scaleY(1);
+  transition-delay: 0s;
 }
 nav div#nav-logo{
   text-align: center;
@@ -129,7 +133,12 @@ div#nav-mobile {
   transform: translateX(-50%);
   white-space: nowrap;
   max-width: 100%;
+  transition: 1s;
+  opacity: 0;
   text-transform: uppercase;
+}
+nav.active div#nav-mobile {
+  opacity: 1; 
 }
 div#nav-mobile div:first-child {
   color: #4a4a4a;
@@ -1212,7 +1221,16 @@ footer ol li a {
 .even {
   animation: even 1s both;
 }
-
+section#test_2:after {
+  content: '';
+  width: 12.5%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: white;
+  z-index: 3;
+}
 div#test1 {
   width: 100%;
   height: 33.3%;
@@ -1222,9 +1240,10 @@ div#test1 {
   background-size: cover;
   background-position: center;
   z-index: 3;
+  pointer-events: none;
 }
 div#test1.active {
-  display: none;
+  opacity: 0;
 }
 div#test2 {
   width: 100%;
@@ -1232,9 +1251,10 @@ div#test2 {
   position: absolute;
   top: 0;
   z-index: 3;
+  pointer-events: none;
 }
 div#test2.active {
-  display: none;
+  opacity: 0;
 }
 div#test3 {
   width: 100%;
@@ -1242,9 +1262,10 @@ div#test3 {
   position: absolute;
   top: 0;
   z-index: 3;
+  pointer-events: none;
 }
 div#test3.active {
-  display: none;
+  opacity: 0;
 }
 div#test4 {
   width: 100%;
@@ -1252,9 +1273,10 @@ div#test4 {
   position: absolute;
   top: 0;
   z-index: 3;
+  pointer-events: none;
 }
 div#test4.active {
-  display: none;
+  opacity: 0;
 }
 div#test5 {
   width: 100%;
@@ -1262,9 +1284,10 @@ div#test5 {
   position: absolute;
   top: 0;
   z-index: 3;
+  pointer-events: none;
 }
 div#test5.active {
-  display: none;
+  opacity: 0;
 }
 div#test6 {
   width: 100%;
@@ -1272,7 +1295,290 @@ div#test6 {
   position: absolute;
   top: 0;
   z-index: 3;
+  pointer-events: none;
 }
 div#test6.active {
-  display: none;
+  opacity: 0;
+}
+
+/* _responsive */
+
+@media (max-width: 1680px){
+  div#center-text h1 {
+    font-size: 40px;
+    max-width: 620px;
+  }
+  div#center-text p {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 580px;
+  }
+  a#main-logo img {
+    width: 80px;
+  }
+  a#mobile-number {
+    font-size: 18px;
+  }
+  div#center-text a {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    width: 140px;
+  }
+  div#center-text div.small-text {
+    font-size: 18px;
+  }
+  section.advantages div.bottom-text h2 {
+    font-size: 40px;
+  }
+  section.advantages div.bottom-text p:nth-child(2) {
+    font-size: 18px;
+    margin-top: 35px;
+  }
+  section.advantages div.bottom-text a {
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+  }
+  div#services h2 {
+    font-size: 40px;
+  }
+  div#service-icons {
+    margin-top: 30px;
+  }
+  div#services ul {
+    margin-bottom: 30px;
+  }
+  section.idea-container div.right-text h2 {
+    font-size: 30px;
+    max-width: 570px;
+    margin-bottom: 34px;
+  }
+  section.idea-container div.right-text p {
+    font-size: 18px;
+  }
+  section.idea-container div.right-text div._a_ a{
+    height: 40px;
+    line-height: 40px;
+    width: 220px;
+  }
+  div#history-content h2 {
+    font-size: 40px;
+  }
+  div#history-content h2 span i {
+    font-size: 50px;
+  }
+  div#history-content p {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  div#history-content div.listing div.list div.side:last-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  div#history-content div.listing div.list div.side div:first-child {
+    font-size: 40px;
+  }
+  div#history-content div.listing:before {
+    margin-left: -18px;
+  }
+  div#history-content div.listing:after {
+    margin-left: -18px;
+  } 
+  div#history-content div.history-footer div.button a {
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    width: 140px;
+  }
+  section.question-container div.form-container h3{
+    font-size: 30px;  
+  }
+  section.question-container div.form-container form input {
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  section.question-container div.form-container form input:last-child {
+    padding: 0; 
+    font-size: 14px;
+  }
+  div#slider {
+    width: 366px !important;
+    height: 366px !important;
+  }
+  .rs-container.full {
+    width: 366px !important;
+    height: 366px !important;
+  }
+  div#time {
+    font-size: 60px;
+  }
+  div#clock svg {
+    width: 392px !important;
+    height: 392px !important;
+  }
+  section#last-container div.text-content h3 {
+    font-size: 30px;
+  }
+  section#last-container div.text-content p {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  section#last-container {
+    padding-top: 165px;
+    padding-bottom: 165px;
+  }
+  footer h4 {
+    font-size: 24px;
+    left: 18%;
+  }
+  footer h5 {
+    font-size: 24px;
+    left: 18%;
+  }
+  form#subscribe input {
+    height: 40px;
+  }
+  form#subscribe {
+    height: 40px;
+    line-height: 40px;
+    right: 6.5%;
+    width: 400px;
+  }
+  footer ol {
+    right: 6.5%; 
+  }
+  form#subscribe div.stick {
+    height: 30px;
+  }
+  footer ul {
+    left: 18%;
+  }
+  div#copyright {
+    left: 18%;
+  }
+}
+@media (max-width: 1365px){
+  div#nav-mobile div:last-child {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1023px){
+  div.stick:nth-child(odd) {
+    display: none;
+  }
+  div#center-text {
+    left: 25%;
+  }
+  nav {
+    width: 25%;
+  }
+  section.advantages div.bottom-text h2 {
+    font-size: 30px;
+  }
+  section.advantages div.bottom-text {
+    left: 52.5%;
+  }
+  section.service-container div.first-image {
+    left: 25%;
+  }
+  section.service-container div.second-image {
+    left: 50%;
+  }
+  section.service-container div.third-image {
+    left: 75%;
+  }
+  div#services h2 {
+    left: 25%;
+  }
+  div#service-icons {
+    left: calc( 25% + 66px);
+  }
+  section.idea-container div.right-text {
+    padding-right: 5%;
+  }
+  section.idea-container div.right-text h2 {
+    max-width: 500px;
+    font-size: 24px;
+  }
+  section.idea-container div.right-text p {
+    width: 500px;
+    font-size: 16px;
+  }
+  div#history-content {
+    left: calc(25% + 30px);
+  }
+  section.question-container div.form-container {
+    width: 50%;
+    transform: translate(-25%,-50%);
+  }
+  div#clock {
+    transform: translate(-25%,-50%)
+  }
+  div.sunset {
+    right: -100px;
+  }
+  div.sunrise {
+    left: -98px;
+  }
+  section#last-container div.text-content {
+    max-width: 500px;
+    padding-left: 12.5%;
+  }
+  footer {
+    text-align: center;
+    height: unset;
+    padding: 30px 0;
+    padding-left: 25%;
+  }
+  footer h4 {
+    position: relative;
+    left: unset;
+    top: unset;
+    margin: 10px 0;
+  }
+  footer h5 {
+    position: relative;
+    left: unset;
+    top: unset;
+    margin: 10px 0;
+  }
+  footer ul {
+    position: relative;
+    left: unset;
+    top: unset;
+    margin: 10px 0;
+  }
+  footer ol {
+    position: relative;
+    left: unset;
+    top: unset;
+    right: unset;
+    margin: 10px 0;
+  }
+  form#subscribe {
+    position: relative;
+    top: unset;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px 0;
+  }
+  body {
+    overflow-x: visible;
+  }
+  div#copyright {
+    position: relative;
+    left: unset;
+    top: unset;
+    margin: 10px 0;
+  }
+  footer ul li {
+    padding-right: 20px;
+  }
+  footer ul li a {
+    font-size: 16px;
+  }
 }

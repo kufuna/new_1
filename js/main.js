@@ -74,7 +74,7 @@ document.querySelector('body').classList.add('loaded')
 
 function scrollToAnchor(aid){
   var aTag = $(aid);
-  $('html,body').animate({scrollTop: aTag.offset().top - 123},1000);
+  $('html,body').animate({scrollTop: aTag.offset().top - 100},1000);
 }
 
 $("a.nav-link").on('click', function(event) {
@@ -82,12 +82,16 @@ $("a.nav-link").on('click', function(event) {
 	$(this).addClass('active')
 	event.preventDefault();
 	var hash = this.hash;
+  if ($(hash).offset() != undefined) {
 	var y = $(hash).offset().top;
+  }
 	$('html, body').animate({
 	scrollTop: y
 	}, 800, function(){
 	});
 });
+
+
 
 
 var a = document.querySelectorAll('.fade');
@@ -106,12 +110,14 @@ var test1 = document.querySelector('#test1');
 var test_1 = document.querySelector('#test_1');
 
 
+
 window.addEventListener('scroll',function(){
   imageTop();
 	fadeFn();
   backWhite();
   mapFn();
-	if (window.scrollY > header.clientHeight ) {
+  disableContent();
+	if (window.scrollY > header.clientHeight - 200 ) {
 		navigation.classList.add('active')
 	}else {
 		navigation.classList.remove('active')
@@ -123,14 +129,123 @@ window.addEventListener('resize',function(){
     imageTop();
     backWhite();
     mapFn();
+    disableContent()
   }, 300);
 })
+
+
 
 // if (window.scrollY > offset(a[i]).top + a[i].clientHeight * 3) {
 //     var diff = window.scrollY - a[i].clientHeight * 3;
 //     var perc = diff / a[i].clientHeight;
 //     $(a[i]).parent().parent().closest('.back-white').css({ opacity : perc * 2.4 - 1 })
 // }
+
+var xx = 0;
+
+
+var disableContent = function(){
+  var disabled = document.querySelectorAll('.disabled');
+  for (var i = 0;  i < disabled.length; i++) {
+    if (window.scrollY > offset(disabled[i]).top - 100 && xx === 0) {
+      var a = disabled[i].dataset.id;
+      // $('nav ul li a').css({ pointerEvents : 'none' })
+      $('nav ul li').find("[data-id=" + a + "]").trigger('click');
+      $('nav ul li').find("[data-id=" + a + "]").attr('href', 'javascript:');
+      // disableScroll();
+    } if (window.scrollY > offset(disabled[i]).top + 100)  {
+        var a = disabled[i].dataset.id;
+        // $('nav ul li').find("[data-id=" + a + "]").attr('href', a);
+      }
+  }
+}
+
+
+
+disableContent();
+
+// $('.nav-link').click(function(){
+//   console.log('hrefed')
+// })
+
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+      document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+      window.onwheel = preventDefault; // modern standard
+      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+      window.ontouchmove  = preventDefault; // mobile
+      document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+    window.onmousewheel = document.onmousewheel = null; 
+    window.onwheel = null; 
+    window.ontouchmove = null;  
+    document.onkeydown = null;  
+}
+
+// var keys = [32,33,34,35,36,37,38,39,40];
+
+// function preventDefault(e) {
+//   e = e || window.event;
+//   if (e.preventDefault)
+//       e.preventDefault();
+//   e.returnValue = false;  
+// }
+
+// function keydown(e) {
+//     for (var i = keys.length; i--;) {
+//         if (e.keyCode === keys[i]) {
+//             preventDefault(e);
+//             return;
+//         }
+//     }
+// }
+
+// function wheel(e) {
+//   preventDefault(e);
+// }
+
+// function disable_scroll() {
+//   if (window.addEventListener) {
+//       window.addEventListener('DOMMouseScroll', wheel, false);
+//   }
+//   window.onmousewheel = document.onmousewheel = wheel;
+//   document.onkeydown = keydown;
+//   // disable_scroll_mobile();
+// }
+
+// function enable_scroll() {
+//     if (window.removeEventListener) {
+//         window.removeEventListener('DOMMouseScroll', wheel, false);
+//     }
+//     window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+//     // enable_scroll_mobile();
+// }
+
+// $('#disable').click(disable_scroll)
+// $('#enable').click(enable_scroll)
+
 
 var mapFn = function(){
   var map = document.querySelector('#map-img');
@@ -142,7 +257,6 @@ var mapFn = function(){
       return
     }
     scaleImg.style.transform = 'scale(' + perc + ')';
-    scaleImg.style.transition= '0.1s';
     console.log(perc)
   }
 }
@@ -210,7 +324,6 @@ imageTop();
 var fadeFn = function(){
 
   for (var i = 0; i < a.length; i++) {
-
   		var differance = window.scrollY - offset(a[i]).top;
   		var percentage = differance / a[i].clientHeight * 1.6;
   		// console.log(percentage)
@@ -241,11 +354,15 @@ var kfn_type = function(element,speed){
 var kfn_anim = function(){
     var elements = document.querySelectorAll('.kfn_anim');
     for (var i = 0; i < elements.length; i++) {
+        var top = 0;
+        if (elements[i].dataset.top) {
+          top = Number(elements[i].dataset.top)
+        }
         if (mobileDetect) {
           elements[i].style.visibility = 'hidden';
         }
         var elementData = elements[i].dataset.kfn;
-        if (window.scrollY > offset(elements[i]).top - window.innerHeight) {
+        if (window.scrollY > offset(elements[i]).top - window.innerHeight + top) {
             elements[i].classList.add(elementData)
         }
     }
@@ -273,6 +390,16 @@ var kufuna_parallax = function(){
 kufuna_parallax();
 $(window).resize(kufuna_parallax);
 $(window).scroll(kufuna_parallax);
+
+
+
+
+
+
+
+
+
+
 
 // SmoothScroll({
 //     animationTime: 600,
