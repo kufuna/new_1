@@ -15,6 +15,34 @@
 
 <div id="loader-fragment"></div>
 <div id="body">
+<div id="hidden" style="display: none;">
+	<ul>
+		<li>
+			<a href="#test1" class="nav-link"  style="transition-delay: 1s;">HIGHLINE</a>
+		</li>
+		<li>
+			<a href="#test2" class="nav-link" data-id="_two_" style="transition-delay: 1.05s;">MANAGEMENT</a>
+		</li>
+		<li>
+			<a href="#test1" class="nav-link" style="transition-delay: 1.1s;">SERVICES</a>
+		</li>
+		<li>
+			<a href="#test1" class="nav-link" data-id="_three_" style="transition-delay: 1.15s;">PROFIT</a>
+		</li>
+		<li>
+			<a href="#test3" class="nav-link" style="transition-delay: 1.2s;" data-id="_four_">EXPERIENCE</a>
+		</li>
+		<li>
+			<a href="#test4" class="nav-link" style="transition-delay: 1.25s;" data-id="_five_">INTERIER</a>
+		</li>
+		<li>
+			<a href="#test5" class="nav-link" style="transition-delay: 1.3s;" data-id="_six_">INVEST</a>
+		</li>
+		<li>
+			<a href="#test1" class="nav-link" style="transition-delay: 1.35s;">LOCATION</a>
+		</li>
+	</ul>
+</div>
 <nav>
 	<div id="nav-logo">
 		<a href="">
@@ -161,7 +189,7 @@
 		<div class="back-image fade" style="background-image: url(img/serv.jpg); background-repeat: no-repeat;background-size: cover;background-position: center; background-attachment: fixed; opacity: 0"></div>
 
 		<div class="service-images">
-			<div class="first-image hover_img kfn_anim" data-top="700"  data-role="img" data-kfn="FL">
+			<div class="first-image hover_img kfn_anim" data-top="0"  data-role="img" data-kfn="FL">
 				<div style="background: url(img/14.jpg) no-repeat; background-position: center;background-size: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
 			</div>
 			<div class="second-image hover_img kfn_anim" data-kfn="FL" data-role="img">
@@ -567,9 +595,15 @@
 
 </div>
 
+<div id="mobile">
+	<div id="boxx"></div>
+</div>
+
+
 
 <script src="js/jquery.min.js"></script>
 <script src="js/roundslider.min.js"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

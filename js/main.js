@@ -150,8 +150,8 @@ var disableContent = function(){
     if (window.scrollY > offset(disabled[i]).top - 100 && xx === 0) {
       var a = disabled[i].dataset.id;
       // $('nav ul li a').css({ pointerEvents : 'none' })
-      $('nav ul li').find("[data-id=" + a + "]").trigger('click');
-      $('nav ul li').find("[data-id=" + a + "]").attr('href', 'javascript:');
+      $('div#hidden ul li').find("[data-id=" + a + "]").trigger('click');
+      $('div#hidden ul li').find("[data-id=" + a + "]").attr('href', 'javascript:');
       // disableScroll();
     } if (window.scrollY > offset(disabled[i]).top + 100)  {
         var a = disabled[i].dataset.id;
@@ -257,7 +257,7 @@ var mapFn = function(){
       return
     }
     scaleImg.style.transform = 'scale(' + perc + ')';
-    console.log(perc)
+    // console.log(perc)
   }
 }
 mapFn();
@@ -323,9 +323,14 @@ imageTop();
 
 var fadeFn = function(){
 
+  var number = 1.6;
+
   for (var i = 0; i < a.length; i++) {
+      if ($(a[i]).parent().parent().hasClass('advantages')) {
+        number = 3;
+      }
   		var differance = window.scrollY - offset(a[i]).top;
-  		var percentage = differance / a[i].clientHeight * 1.6;
+  		var percentage = differance / a[i].clientHeight * number;
   		// console.log(percentage)
   		a[i].style.opacity = percentage
   }
@@ -394,8 +399,24 @@ $(window).scroll(kufuna_parallax);
 
 
 
+$(function() {
+  $("#boxx").swipe( {
+    //Generic swipe handler for all directions
+    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      $(this).text("You swiped " + direction );  
+    }
+  });
 
+  //Set some options later
+  // $("#boxx").swipe( {fingers:2} );
+});
 
+$('#boxx').on('touchstart',function(){
+  $(this).addClass('active')
+})
+$('#boxx').on('touchend',function(){
+  $(this).removeClass('active')
+})
 
 
 
