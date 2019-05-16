@@ -276,17 +276,17 @@ function enableScroll() {
 
 
 var mapFn = function(){
-  var map = document.querySelector('#map-img');
-  var scaleImg = document.querySelector('#map-img .map-image');
-  if (window.scrollY > offset(map).top - window.innerHeight) {
-    var diff = window.scrollY - offset(map).top;
-    var perc = -1 * diff / map.clientHeight * 4;
-    if (perc <= 1) {
-      return
-    }
-    scaleImg.style.transform = 'scale(' + perc + ')';
-    // console.log(perc)
-  }
+  // var map = document.querySelector('#map-img');
+  // var scaleImg = document.querySelector('#map-img .map-image');
+  // if (window.scrollY > offset(map).top - window.innerHeight) {
+  //   var diff = window.scrollY - offset(map).top;
+  //   var perc = -1 * diff / map.clientHeight * 4;
+  //   if (perc <= 1) {
+  //     return
+  //   }
+  //   scaleImg.style.transform = 'scale(' + perc + ')';
+  //   // console.log(perc)
+  // }
 }
 mapFn();
 

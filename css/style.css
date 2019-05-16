@@ -503,6 +503,13 @@ div#services ul li {
   margin: 0 2.5px;
   min-width: 127px;
   max-width: 127px;
+  cursor: pointer;
+}
+div#services ul li p {
+  transition: 1s;
+}
+div#services ul li:hover p {
+  color: #b62542;
 }
 div#services ul li img {
   margin-bottom: 23px;
@@ -581,10 +588,11 @@ section.history-container {
   width: 100%;
 }
 div#history-content {
-  position: absolute;
+  position: absolute;bsolute;
   bottom: 72px;
-  left: 25%;
+  left: 37.5%;
   z-index: 6;
+  transform: translateX(-50%);
 }
 div#history-content h2 {
   max-width: 530px;
@@ -761,7 +769,14 @@ section#location div#map-img {
 }
 section#location div#map-img div.map-image {
   position: relative;
-  /*transform: scale(2);*/
+  transform: scale(2);
+}
+@keyframes map {
+  100% { transform: scale(1); visibility: visible; }
+}
+.map {
+  animation: map linear 5s both;
+  /* რუქა რუკა */
 }
 section#location div#map-img div.map-image div.pin {
   width: 30px;
@@ -1889,7 +1904,16 @@ div#left-popup {
   background: rgba(0,0,0,0.8);
   top: 0;
   left: 0;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+div#left-popup div.body {
+  transform: scaleX(0);
+  transition: .6s;
+  transform-origin: left;
+}
+div#left-popup.active-p div.body {
+  transform: scaleX(1);
 }
 div#left-popup div.body svg {
   position: absolute;
@@ -1905,6 +1929,8 @@ div#left-popup div.body svg:hover {
 }
 div#left-popup.active-p {
   display: block;
+  opacity: 1;
+  pointer-events: all;  
 }
 div#left-popup div.body {
   width: 715px;
@@ -1918,10 +1944,17 @@ div#left-popup div.body div.content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,50%);
+  opacity: 0;
+  transition: 1s;
+  transition-delay: 0s;
   width: 481px;
 }
-
+div#left-popup.active-p div.body div.content {
+  transform: translate(-50%,-50%);
+  opacity: 1;
+  transition-delay: .6s;
+}
 div#left-popup div.body div.content div.form-container {
   position: absolute;
   left: 50%;
@@ -1990,10 +2023,15 @@ div#right-popup {
   background: rgba(0,0,0,0.8);
   top: 0;
   left: 0;
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+  /*display: none;*/
 }
 div#right-popup.active-z {
-  display: block;
+  opacity: 1;
+  transform: scaleX(1);
+  pointer-events: all;
+
 }
 div#right-popup div.body {
   width: 716px;
@@ -2002,12 +2040,50 @@ div#right-popup div.body {
   right: 0;
   top: 0;
   background: white;
+  z-index: 10;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: .6s;
+  /*transition-delay: 1s;*/
+}
+div#right-popup.active-z div.body {
+  transform: scaleX(1);
+  opacity: 1;
 }
 div#right-popup div.text {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 413px;
+  transform: translate(-50%,50%);
+  transition: 1s;
+  opacity: 0;
+  z-index: 10;
+}
+div#right-popup.active-z div.text {
+  opacity: 1;
   transform: translate(-50%,-50%);
+  transition-delay: .7s;
+}
+div#right-popup div.body div.text img {
+  position: relative;
+  width: 100%;
+  margin-bottom: 70px;
+  height: auto;
+}
+div#right-popup div.body div.text h2 {
+  font-size: 40px;
+  text-align: center;
+  color: black;
+}
+div#right-popup div.body div.text p {
+  font-size: 16px;
+  color: #383838;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 27px;
 }
 div#right-popup div.body img {
   position: absolute;
