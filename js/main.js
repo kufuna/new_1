@@ -92,7 +92,35 @@ $("a.nav-link").on('click', function(event) {
 });
 
 
+$('.pop').on('click',function(e){
+  e.preventDefault();
+  $('#left-popup').addClass('active-p')
+})
 
+document.querySelector('#left-popup').addEventListener('click',function(e){
+  if (e.target.classList.contains('active-p')) {
+    this.classList.remove('active-p')
+  }
+})
+
+$('#close-l').on('click',function(){
+  $('#left-popup').removeClass('active-p')
+})
+
+$('.pin').on('click',function(e){
+  e.preventDefault();
+  $('#right-popup').addClass('active-z')
+})
+
+document.querySelector('#right-popup').addEventListener('click',function(e){
+  if (e.target.classList.contains('active-z')) {
+    this.classList.remove('active-z')
+  }
+})
+
+$('#close-r').on('click',function(){
+  $('#right-popup').removeClass('active-z')
+})
 
 var a = document.querySelectorAll('.fade');
 
@@ -397,28 +425,70 @@ $(window).resize(kufuna_parallax);
 $(window).scroll(kufuna_parallax);
 
 
+$('#mobile-burger').on('click',function(){
+  $(this).toggleClass('menu-opened')
+})
 
+var count = 1;
+var length = $('#mobile .slider-item').length;
+
+if (count === 1) {
+  $('#mobile').addClass('start')
+}else {
+  $('#mobile').removeClass('start')
+}
+
+
+console.log(length)
 
 $(function() {
-  $("#boxx").swipe( {
+  $("#mobile").swipe( {
     //Generic swipe handler for all directions
     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
       // $(this).text("You swiped " + direction );  
-      if (direction == 'down') {
-        $(this).find('div').addClass('active')
-        console.log(distance)
+      if (direction == 'up' && length > count) {
+        $('#loader-stick').addClass('active')
+        $(this).find("[data-row=" + count + "]").addClass('out')
+        $(this).find("[data-row=" + (count + 1) + "]").addClass('active');
+        count++;
+        if (count === 1) {
+          $('#mobile').addClass('start')
+        }else {
+          $('#mobile').removeClass('start')
+        }
+        setTimeout(function() {
+          console.log(count)
+          $('#loader-stick').removeClass('active')
+          $('#mobile').find("[data-row=" + (count - 1) + "]").removeClass('active')
+          $('#mobile').find("[data-row=" + (count - 1) + "]").removeClass('out')
+        }, 1000);
+        // console.log(count)
+      }if (direction == 'down' && count > 1) {
+        $('#loader-stick').addClass('active')
+        $(this).find("[data-row=" + count + "]").addClass('out')
+        $(this).find("[data-row=" + (count - 1) + "]").addClass('active');
+        count--;
+        if (count === 1) {
+          $('#mobile').addClass('start')
+        }else {
+          $('#mobile').removeClass('start')
+        }
+        setTimeout(function() {
+          console.log(count)
+          $('#loader-stick').removeClass('active')
+          $('#mobile').find("[data-row=" + (count + 1) + "]").removeClass('active')
+          $('#mobile').find("[data-row=" + (count + 1) + "]").removeClass('out')
+        }, 1000);
+        // console.log(count)
       }
     }
   });
-
-  //Set some options later
-  // $("#boxx").swipe( {fingers:2} );
 });
 
-$('#boxx').on('touchstart',function(){
+$('#mobile .slider-item .image').on('touchstart',function(){
   $(this).addClass('active')
 })
-$('#boxx').on('touchend',function(){
+$('#mobile .slider-item .image').on('touchend',function(){
   $(this).removeClass('active')
 })
 

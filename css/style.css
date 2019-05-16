@@ -1592,6 +1592,12 @@ div#mobile {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  opacity: 0;
+  transition: .5s;
+  pointer-events: all;
+}
+body.loaded div#mobile {
+  opacity: 1;
 }
 
 @media (max-width: 1200px){
@@ -1614,51 +1620,397 @@ div#mobile {
     min-width: unset; 
   }
 }
-
-div#mobile img {
+div#loader-stick {
+  width: 100%;
+  height: 4px;
+  background: #b62542;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  z-index: 3; 
+}
+div#loader-stick.active {
+  animation: loader cubic-bezier(0.74, 0.03, 0.25, 1) 1.4s both;
+}
+@keyframes loader {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+div#mobile header {
+  width: 100%;
+  height: unset;
+  position: absolute;
+  z-index: 5;
+}
+div#mobile header div.logo-image {
+  width: 80px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateY(-100%);
+  margin-left: -40px;
+  transition: 1s;
+}
+body.loaded div#mobile header div.logo-image {
+  transform: translateY(0);
+}
+div#mobile header div.logo-image a {
+  display: block;
+}
+div#mobile header div.logo-image img {
   width: 100%;
   height: auto;
 }
-div#boxx {
-  width: 100%;
-  height: 100%;
+div#mobile header a#mobile-call {
+  display: block;
   position: absolute;
-  top: 0;
-  background: white;
-  transition: 1s;
-  transition-timing-function: ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
+  background: #b62542;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  right: 33px;
+  top: 31px;
+  transform: scale(0);
+  transition: .6s;
+  transition-delay: .5s;
 }
-div#boxx.active {
+body.loaded div#mobile header a#mobile-call {
+  transform: scale(1);
+}
+div#mobile header a#mobile-call svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+div#mobile-burger {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: #b62542;
+  position: absolute;
+  left: 33px;
+  top: 31px;
+  cursor: pointer;
+  transition: 1s;
+}
+div#mobile.start div#mobile-burger {
+  background: transparent;
+}
+div#mobile-burger div.line {
+  width: 20px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  left: 10px;
+  transition: .6s;
+}
+div#mobile.start div#mobile-burger div.line {
   background: black;
 }
-div#boxx {
+div#mobile-burger.menu-opened div.line:nth-child(2) {
+  opacity: 0;
+}
+div#mobile-burger.menu-opened div.line:nth-child(1) {
+  transform: rotate(45deg) translate(5px,200%);
+}
+div#mobile-burger.menu-opened div.line:nth-child(3) {
+  transform: rotate(-45deg) translate(4px,-200%);
+}
+div#mobile div.slider-item {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-div#boxx div {
   position: fixed;
   top: 0;
   left: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: white;
+  transition: 1s;
+}
+div#mobile div.slider-item div.image {
   width: 100%;
   height: 100%;
-  transition: 1s ease-in-out;
-  -webkit-transform-transition: 1s ease-in-out;
-  -moz-transform-transition: 1s ease-in-out;
-  -ms-transform-transition: 1s ease-in-out;
-  -o-transform-transition: 1s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-div#boxx div.active {
-  transform: translateY(-61px);
-  -webkit-transform: translateY(-61px);
-  -moz-transform: translateY(-61px);
-  -ms-transform: translateY(-61px);
-  -o-transform: translateY(-61px);
-  transform: translateY(-61px);
+div#mobile div.slider-item div.image div.front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s;
+}
+div#mobile div.slider-item div.image div.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div#mobile div.slider-item.active {
+  pointer-events: all; 
+  opacity: 1;
+  transition: 1s;
+  transition-delay: 1s;
+  opacity: 1;
+}
+div#mobile div.slider-item div.image.active div.front {
+  opacity: 0;
+}
+div#mobile div.slider-item div.text {
+  position: absolute;
+  left: 33px;
+  bottom: 33px;
+  user-select: none;
+  transform: translateY(200%);
+}
+div#mobile div.slider-item.out {
+  opacity: 0;
+  transition-delay: 1s;
+}
+div#mobile div.slider-item div.front {
+  opacity: 1;
+}
+div#mobile div.slider-item.out div.front {
+  opacity: 0;
+}
+div#mobile div.slider-item.active.out div.text {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: 1s;
+}
+div#mobile div.slider-item.active div.text {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: 1s;
+  transition-delay: 1s;
+}
+div#mobile div.slider-item.active.out div.text {
+  transition-delay: 0s !important;
+}
+
+
+
+div#mobile div.slider-item div.custom-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s;
+}
+div#mobile div.slider-item.active.pre {
+  transition: 0s !important;
+  transition-delay: 0s !important;
+}
+div#mobile div.slider-item.active.pree {
+  transition: 0s !important;
+  transition-delay: 0s !important;
+}
+div#mobile div.slider-item.active.pree.out {
+  transition: 1s !important;
+  transition-delay: 1s !important;
+
+}
+/*div#mobile div.slider-item.out div.custom-image {
+  transform: translateY(-60px);
+}
+div#mobile div.slider-item div.custom-image_1 {
+  transform: translateY(-60px);
+}*/
+div#mobile div.slider-item.pree div.custom-image_1 {
+  transition: 1s;
+}
+div#mobile div.slider-item.active.pree div.custom-image_1 {
+  transform: translateY(-60px);
+  transition: 1s;
+}
+div#mobile div.slider-item div.border {
+  width: 23px;
+  height: 23px;
+  border: 2px solid black;
+  border-top: 0;
+  border-right: 0;
+  position: absolute;
+  left: 49%;
+  bottom: 17px;
+  transform: rotate(-45deg) translateY(-50%);
+}
+
+
+
+
+
+
+div#mobile div.text h2 {
+  font-size: 30px;
+  color: black;
+}
+div#mobile div.text h2 span {
+  color: #b62542;
+}
+div#mobile div.text p {
+  font-size: 14px;
+  color: black;
+  margin-top: 6px;
+}
+div#mobile div.text a {
+  width: 309px;
+  height: 55px;
+  background-color: #b62542;
+  color: white;
+  font-size: 22px;
+  line-height: 55px;
+  text-align: center;
+  display: block;
+  margin-top: 13px;
+}
+
+
+/* popup  */
+
+div#left-popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 99;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  display: none;
+}
+div#left-popup div.body svg {
+  position: absolute;
+  right: 46px;
+  top: 46px;
+  z-index: 10;
+  cursor: pointer;
+  transition: 1s;
+  display: inline-block;
+}
+div#left-popup div.body svg:hover {
+  transform: rotate(360deg);
+}
+div#left-popup.active-p {
+  display: block;
+}
+div#left-popup div.body {
+  width: 715px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  height: 100%;
+}
+div#left-popup div.body div.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 481px;
+}
+
+div#left-popup div.body div.content div.form-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  z-index: 15;
+  width: 100%;
+}
+div#left-popup div.body div.content div.form-container h3 {
+  font-size: 40px;
+}
+div#left-popup div.body div.content div.form-container p.leave {
+  color: #383838;
+  margin-top: 5px;
+  font-size: 16px;
+}
+div#left-popup div.body div.content div.form-container form {
+  width: 100%;
+  margin-top: 24px;
+}
+div#left-popup div.body div.content div.form-container form input {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 23px;
+  margin-bottom: 16px;
+  border: solid 1px #e5e5e5;
+  font-size: 18px;
+  outline: none;
+  transition: .6s;
+}
+div#left-popup div.body div.content div.form-container form input:focus {
+  border-color: #b62542;
+}
+div#left-popup div.body div.content div.form-container form input::placeholder {
+  color: black;
+  opacity: 0.7;
+}
+div#left-popup div.body div.content div.form-container form input:last-child {
+  background: #b62542;
+  font-size: 22px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: .6s;
+}
+div#left-popup div.body div.content div.form-container form input:last-child:hover {
+  background: black;
+}
+div#left-popup div.body div.content div.form-container p.experience {
+  font-size: 16px;
+  color: #383838;
+  width: 235px;
+  padding-left: 13px;
+  border-left: 2px solid #b62542;
+  margin-top: 3px;
+}
+
+
+div#right-popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 99;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  display: none;
+}
+div#right-popup.active-z {
+  display: block;
+}
+div#right-popup div.body {
+  width: 716px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: white;
+}
+div#right-popup div.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+div#right-popup div.body img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  right: 0;
+}
+div#right-popup div.body svg {
+  position: absolute;
+  left: 46px;
+  top: 46px;
+  cursor: pointer;
 }
