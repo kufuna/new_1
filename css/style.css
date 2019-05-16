@@ -4,7 +4,7 @@ html {
 }
 body {
   margin: 0;
-  overflow-x: hidden; 
+  /*overflow-x: hidden; */
   min-width: 768px;
 }
 * {
@@ -120,6 +120,14 @@ nav ul li a {
   transform: translateY(100%);
   transition: .6s;
   transition-delay: 0s;
+}
+nav ul li a span {
+  display: block;
+  font-size: 12px;
+  color: #4a4a4a;
+}
+nav ul li a:hover span{
+  color: #b62542;
 }
 nav.active ul li a {
   transform: translateY(0);
@@ -349,10 +357,10 @@ section div.back-white {
   opacity: 0;
 }
 section.change-section {
-  height: 300vh;
+  height: 400vh;
 }
 section.advantages {
-  height: 300vh;
+  height: 400vh;
   background: white;
 }
 section.advantages div.bottom-text {
@@ -1234,8 +1242,8 @@ section#test_2:after {
 }
 div#test1 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   background: url(../img/down.png) no-repeat;
   background-size: cover;
@@ -1248,8 +1256,8 @@ div#test1.active {
 }
 div#test2 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   z-index: 3;
   pointer-events: none;
@@ -1259,8 +1267,8 @@ div#test2.active {
 }
 div#test3 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   z-index: 3;
   pointer-events: none;
@@ -1270,8 +1278,8 @@ div#test3.active {
 }
 div#test4 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   z-index: 3;
   pointer-events: none;
@@ -1281,8 +1289,8 @@ div#test4.active {
 }
 div#test5 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   z-index: 3;
   pointer-events: none;
@@ -1292,8 +1300,8 @@ div#test5.active {
 }
 div#test6 {
   width: 100%;
-  height: 33.3%;
-  position: absolute;
+  height: 25%;
+  position: sticky;
   top: 0;
   z-index: 3;
   pointer-events: none;
