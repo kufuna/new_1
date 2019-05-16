@@ -2098,3 +2098,58 @@ div#right-popup div.body svg {
   top: 46px;
   cursor: pointer;
 }
+
+div#mobile footer {
+  height: 100%;
+  padding: 0; 
+  padding-left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+}
+div#mobile footer div.content {
+  position: absolute;
+  bottom: 33px;
+  width: 100%;
+  z-index: 10;
+  height: 270px;
+  bottom: 0;
+  background: #1b1e25;
+  padding: 20px 0;
+}
+div#mobile footer div.back_ {
+  width: 100%;
+  height: calc(100% - 270px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+div#mobile form#subscribe {
+  right: unset;
+  width: 90%;
+  margin: 30px 0;
+}
+div#mobile footer ol {
+  margin: 30px 0;
+}
+div#mobile div.back_ div.content_ {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+div#mobile div.back_ div.content_ h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+div#mobile div.back_ div.content_ div.down-text {
+  text-align: center;
+  padding: 0 10px;
+  font-size: 14px;
+}
