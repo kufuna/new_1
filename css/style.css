@@ -1,3 +1,7 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosansgeorgian.css);
+.geo {
+  font-family: 'Noto Sans Georgian', sans-serif;
+}
 html {
   overflow-x: hidden;
   height: 100%;
