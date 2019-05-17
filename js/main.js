@@ -6,31 +6,51 @@ $(document).ready(function(){
 var hour = document.querySelector('#hour');
 var minute = document.querySelector('#minute');
 var slider = $("#slider").roundSlider({
- 	sliderType: "min-range",
-  	width: 10,
-  	startAngle: 90,
-  	value: 550,
-  	create: function(e){
-  		hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
-  		minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
-  		$('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
-  	},
-	drag : function(e){
-  		hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
-  		minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
-  		$('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
-  		// console.log(e.value , e.value * 500 / 1440)
-    },
-    change : function(e){
-    	hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
-      	minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
-      	$('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
-      	// console.log(e.value ,e.value * 500 / 1440 )
-    },
-    max : 1440
+   	  sliderType: "min-range",
+    	width: 10,
+    	startAngle: 90,
+    	value: 550,
+    	create: function(e){
+    		    hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
+    		    minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
+    		    $('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
+    	},
+  	  drag : function(e){
+    		    hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
+    		    minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
+    		    $('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
+    		    // console.log(e.value , e.value * 500 / 1440)
+      },
+      change : function(e){
+      	    hour.innerHTML = Math.floor(e.value / 60) < 10 ? '0' +  Math.floor(e.value / 60) + '' : Math.floor(e.value / 60) + '';
+        	  minute.innerHTML = Math.floor(e.value % 60) < 10 ? '0' + Math.floor(e.value % 60) : Math.floor(e.value % 60);
+        	  $('#clock svg circle:last-child').css({ strokeDashoffset : 505 - (e.value * 505 / 1440) })
+        	  // console.log(e.value ,e.value * 500 / 1440 )
+      },
+      max : 1440
 });
 
+// $('#slider').roundSlider('destroy')
 
+// setInterval(function(){
+//   $('.rs-bar.rs-transition.rs-first').css({ zIndex: 8 ,  transform: 'rotate(' + x + 'deg)' });
+//   x++
+// },300)
+
+// console.log($('.rs-tooltip.rs-tooltip-text').text())
+// setInterval(function(){
+//   $('.rs-tooltip.rs-tooltip-text').trigger('click');
+//   $('.rs-tooltip.rs-tooltip-text').find('input').text(300)
+//   $('.rs-input.rs-tooltip.text').text(300)
+// })
+// setInterval(function(){
+//   $('#slider').focus();
+//   $('#slider').keyup();
+//   // console.log('fwe')
+// })
+// $('#slider').on('keyup',function(){
+//   // console.log('d')
+// })
 
 $('.hover_img').hover(function(){
 	$('.hover_img').addClass('active');
@@ -145,6 +165,7 @@ window.addEventListener('scroll',function(){
   backWhite();
   mapFn();
   disableContent();
+  pins();
 	if (window.scrollY > header.clientHeight - 200 ) {
 		navigation.classList.add('active')
 	}else {
@@ -158,6 +179,7 @@ window.addEventListener('resize',function(){
     backWhite();
     mapFn();
     disableContent()
+    pins();
   }, 300);
 })
 
@@ -231,6 +253,23 @@ function enableScroll() {
     window.ontouchmove = null;  
     document.onkeydown = null;  
 }
+
+var pins = function(){
+  var a = document.querySelectorAll('.pinable');
+  for (var i = 0; i < a.length; i++) {
+    if (window.scrollY > offset(a[i]).top) {
+      var coord = a[i].dataset.pin;
+      $('#desktop-pins').find("[data-pin=" + coord + "]").addClass('active')
+    }if (window.scrollY < offset(a[i]).top) {
+      var coord = a[i].dataset.pin;
+      $('#desktop-pins').find("[data-pin=" + coord + "]").removeClass('active')
+    }if (window.scrollY > offset(a[i]).top + a[i].clientHeight / 3) {
+      var coord = a[i].dataset.pin;
+      $('#desktop-pins').find("[data-pin=" + coord + "]").removeClass('active')
+    }
+  }
+}
+pins();
 
 // var keys = [32,33,34,35,36,37,38,39,40];
 
@@ -352,12 +391,17 @@ imageTop();
 var fadeFn = function(){
 
   var number = 1.6;
+  var differance;
 
   for (var i = 0; i < a.length; i++) {
       if ($(a[i]).parent().parent().hasClass('advantages')) {
         number = 3;
+      }if ($(a[i]).parent().hasClass('service-container')) {
+        var differance = window.scrollY - offset(a[i]).top;
+        console.log('data-id')
+      }else {
+    		var differance = window.scrollY - offset(a[i]).top - window.innerHeight;
       }
-  		var differance = window.scrollY - offset(a[i]).top - window.innerHeight;
   		var percentage = differance / a[i].clientHeight * number;
   		// console.log(percentage)
   		a[i].style.opacity = percentage
@@ -439,7 +483,7 @@ if (count === 1) {
 }
 
 
-console.log(length)
+// console.log(length)
 
 $(function() {
   $("#mobile").swipe( {
@@ -459,12 +503,17 @@ $(function() {
         setTimeout(function() {
           console.log(count)
           $('#loader-stick').removeClass('active')
+          // $('#mobile').find('.slider-item').removeClass('active')
           $('#mobile').find("[data-row=" + (count - 1) + "]").removeClass('active')
           $('#mobile').find("[data-row=" + (count - 1) + "]").removeClass('out')
+          var index = $('#mobile').find('.slider-item.active').attr('data-row')
+          $('#mobile-burger-menu ul li span').removeClass('active')
+          $('#mobile-burger-menu').find("[data-bidge=" + index + "]").addClass('active')
         }, 1000);
         // console.log(count)
       }if (direction == 'down' && count > 1) {
         $('#loader-stick').addClass('active')
+        // $('#mobile').find('.slider-item').removeClass('active')
         $(this).find("[data-row=" + count + "]").addClass('out')
         $(this).find("[data-row=" + (count - 1) + "]").addClass('active');
         count--;
@@ -478,10 +527,14 @@ $(function() {
           $('#loader-stick').removeClass('active')
           $('#mobile').find("[data-row=" + (count + 1) + "]").removeClass('active')
           $('#mobile').find("[data-row=" + (count + 1) + "]").removeClass('out')
+          var index = $('#mobile').find('.slider-item.active').attr('data-row')
+          $('#mobile-burger-menu ul li span').removeClass('active')
+          $('#mobile-burger-menu').find("[data-bidge=" + index + "]").addClass('active')
         }, 1000);
         // console.log(count)
       }
-    }
+    },
+    threshold:40
   });
 });
 
@@ -493,6 +546,46 @@ $('#mobile .slider-item .image').on('touchend',function(){
 })
 
 
+$('.manip').on('click',function(){
+  $('#mobile-burger-menu').toggleClass('active')
+})
+
+$('.manip.m-b-b').on('click',function(e){
+    if (!$(e.target).hasClass('active')) {
+      $('#mobile-burger').removeClass('menu-opened')
+      $('.manip.m-b-b').removeClass('active')
+      $(this).addClass('active')
+      var targetNumber = $(this).attr('data-bidge');
+      $('#loader-stick').removeClass('active')
+      $('#mobile').find('.slider-item.active').addClass('out')
+      $('#mobile').find("[data-row=" + targetNumber + "]").addClass('active')
+      setTimeout(function() {
+        count = Number(targetNumber);
+        console.log(count)
+        $('#loader-stick').removeClass('active')
+        $('#mobile').find(".slider-item.out").removeClass('active').removeClass('out')
+        // $('#mobile').find("[data-row=" + (count + 1) + "]").removeClass('out')
+      }, 1000);
+    }
+})
+
+var pinSlider = $('.pin-slider-1').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:false,
+    dots: true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
 
 
 

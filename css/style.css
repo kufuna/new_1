@@ -132,7 +132,7 @@ nav ul li a:hover span{
 nav.active ul li a {
   transform: translateY(0);
 }
-nav ul li a.active {
+nav ul li a.active span{
   color: black;
 }
 div#nav-mobile {
@@ -588,11 +588,11 @@ section.history-container {
   width: 100%;
 }
 div#history-content {
-  position: absolute;bsolute;
+  position: absolute;
   bottom: 72px;
   left: 37.5%;
   z-index: 6;
-  transform: translateX(-50%);
+  transform: translateX(-48.8%);
 }
 div#history-content h2 {
   max-width: 530px;
@@ -818,7 +818,7 @@ div#clock-container {
 }
 div#clock {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%,-50%);
   z-index: 10;
@@ -1605,6 +1605,9 @@ div#test6.active {
   footer ul li a {
     font-size: 16px;
   }
+  div#right-popup div.pin-slider {
+    display: block !important;
+  }
 }
 
 
@@ -1717,6 +1720,7 @@ div#mobile-burger {
   top: 31px;
   cursor: pointer;
   transition: 1s;
+  z-index: 10;
 }
 div#mobile.start div#mobile-burger {
   background: transparent;
@@ -1787,7 +1791,8 @@ div#mobile div.slider-item div.image.active div.front {
 div#mobile div.slider-item div.text {
   position: absolute;
   left: 33px;
-  bottom: 33px;
+  bottom: 10px;
+  right: 33px;
   user-select: none;
   transform: translateY(200%);
 }
@@ -1814,6 +1819,13 @@ div#mobile div.slider-item.active div.text {
 }
 div#mobile div.slider-item.active.out div.text {
   transition-delay: 0s !important;
+}
+div#mobile div.slider-item div.text div.pin {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  color: #b62542;
 }
 
 
@@ -2152,4 +2164,168 @@ div#mobile div.back_ div.content_ div.down-text {
   text-align: center;
   padding: 0 10px;
   font-size: 14px;
+}
+
+div#mobile-burger-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #b62542;
+  -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  transition: cubic-bezier(0.79,-0.01, 0.18, 1) .6s;
+  transform-origin: left;
+  z-index: 8;
+}
+div#mobile-burger-menu div.up-stick {
+  width: 100%;
+  height: 4px;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div#mobile-burger-menu.active {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+div#mobile-burger-menu ul {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+div#mobile-burger-menu ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  margin: 10px 0;
+}
+div#mobile-burger-menu ul li span {
+  font-size: 20px;
+  text-align: center;
+  display: block; 
+  color: white;
+  transform: translateY(100%);
+  transition: .6s;
+  transition-delay: 0s;
+  backface-visibility: hidden;
+}
+div#mobile-burger-menu ul li span.active {
+  color: black;
+}
+div#mobile-burger-menu.active ul li span {
+  transform: translateY(0);
+}
+
+
+div#desktop-pins {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+div#desktop-pins div.pin-body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: .5s;
+  pointer-events: none;
+}
+div#desktop-pins div.pin-body.active {
+  opacity: 1;
+}
+div#desktop-pins div.pin-body div.pin {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid white;
+  position: absolute;
+  pointer-events: none;
+  animation: pin 1s infinite;
+  cursor: pointer;
+}
+div#desktop-pins div.pin-body.active div.pin {
+  pointer-events: all;
+  z-index: 99999;
+}
+div#desktop-pins div.pin-body div.pin span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b62542;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(1) translate(-50%,-50%);
+}
+div#right-popup div.pin-slider {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,50%);
+  opacity: 0;
+  transition: 1s;
+  transition-delay: 0s;
+  padding: 0 30px;
+  display: none;
+}
+div#right-popup.active-z div.pin-slider {
+  transform: translate(-50%,-50%);
+  opacity: 1;
+  transition-delay: .6s;
+}
+div#right-popup div.pin-slider img {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+div#right-popup div.pin-slider h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+div#right-popup div.pin-slider p {
+  font-size: 16px;
+  color: black;
+  margin-top: 20px;
+}
+@media (max-width: 1025px){
+  div#left-popup div.body {
+    width: 100%;
+  }
+  div#left-popup div.body div.content {
+    width: 100%;
+  }
+  div#left-popup div.body div.content div.form-container {
+    padding: 0 15px;
+  }
+  div#left-popup div.body div.content div.form-container h3 {
+    font-size: 30px;
+  }
+  div#right-popup div.body {
+    width: 100%;
+  }
+  div#right-popup div.text {
+    display: none;
+  }
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background: #b62542 !important;
+}
+@media (max-width: 1900px){
+  div#history-content {
+    transform: translateX(-49.5%);
+  }
 }
