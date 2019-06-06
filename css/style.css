@@ -2329,3 +2329,32 @@ div#right-popup div.pin-slider p {
     transform: translateX(-49.5%);
   }
 }
+
+
+div.success {
+  background: #dff0d8;
+  color: #3c763d;
+  font-size: 22px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #3c763d;
+  margin: 16px 0;
+  width: 100%;
+  animation: _fadeOut 30s forwards;
+}
+div.fail {
+  background: #f2dede;
+  color: #a94442;
+  font-size: 22px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #a94442;
+  margin: 16px 0;
+  width: 100%;
+  animation: _fadeOut 30s forwards;
+}
+
+/* @keyframes _fadeOut {
+  100% { opacity: 0; }
+} */
+
