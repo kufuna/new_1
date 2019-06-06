@@ -2006,7 +2006,7 @@ div#left-popup div.body div.content div.form-container form input::placeholder {
   color: black;
   opacity: 0.7;
 }
-div#left-popup div.body div.content div.form-container form input:last-child {
+div#left-popup div.body div.content div.form-container form input:nth-child(3) {
   background: #b62542;
   font-size: 22px;
   color: white;
